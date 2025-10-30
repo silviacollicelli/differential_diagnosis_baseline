@@ -1,0 +1,28 @@
+experiment: 
+  name: "naive_baseline"
+  projecy: "ovarian_tumor"
+
+data:
+  clinical_path: "data/clinical_case_metadata.parquet"
+  dataset_path: "data/Dataset"
+  batch_size: 8
+  split_ratio: 0.8
+  seed: 0
+
+model:
+  architecture: "densenet121"
+  pretrained: true
+  freeze_until: "denseblock4"
+  num_classes: 2
+
+training:
+  epochs: 15
+  lr_block4: 1e-4
+  lr_classifier: 1e-3
+  patience: 5
+  min_delta: 0.001
+
+transforms:
+  resize: 256
+  crop: 224
+  augment: true
